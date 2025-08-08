@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>Student Menu</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{% url 'student_profile' %}" class="list-group-item list-group-item-action">My Profile</a>
+                <a href="{% url 'my_classes' %}" class="list-group-item list-group-item-action">My Classes</a>
+                <a href="{% url 'my_subjects' %}" class="list-group-item list-group-item-action">My Subjects</a>
+                <a href="{% url 'my_fees' %}" class="list-group-item list-group-item-action">My Fees</a>
+                <a href="{% url 'my_transport' %}" class="list-group-item list-group-item-action">Transport</a>
+                <a href="{% url 'my_food_service' %}" class="list-group-item list-group-item-action">Food Service</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h2>Welcome, {{ student.user.get_full_name }}</h2>
+        <div class="card">
+            <div class="card-header">
+                <h5>My Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+                        <p><strong>Class:</strong> {{ student.school_class }}</p>
+                        <p><strong>Roll Number:</strong> {{ student.roll_number }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Date of Birth:</strong> {{ student.date_of_birth }}</p>
+                        <p><strong>Parent Name:</strong> {{ student.parent_name }}</p>
+                        <p><strong>Enrollment Date:</strong> {{ student.enrollment_date }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

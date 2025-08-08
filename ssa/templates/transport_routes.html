@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Transport Routes{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5>Transport Routes</h5>
+        <a href="{% url 'add_transport_route' %}" class="btn btn-primary">Add New Route</a>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Route Name</th>
+                    <th>Pickup Points</th>
+                    <th>Monthly Fee</th>
+                    <th>Driver</th>
+                    <th>Vehicle</th>
+                    <th>Capacity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for route in routes %}
+                <tr>
+                    <td>{{ route.route_name }}</td>
+                    <td>{{ route.pickup_points|truncatechars:50 }}</td>
+                    <td>{{ route.monthly_fee }}</td>
+                    <td>{{ route.driver_name }}</td>
+                    <td>{{ route.vehicle_number }}</td>
+                    <td>{{ route.capacity }}</td>
+                    <td>
+                        <a href="{% url 'view_transport_route' route.id %}" class="btn btn-sm btn-info">View</a>
+                        <a href="{% url 'edit_transport_route' route.id %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'delete_transport_route' route.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

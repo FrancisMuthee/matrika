@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>Teacher Menu</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{% url 'my_classes' %}" class="list-group-item list-group-item-action">My Classes</a>
+                <a href="{% url 'my_subjects' %}" class="list-group-item list-group-item-action">My Subjects</a>
+                <a href="{% url 'student_records' %}" class="list-group-item list-group-item-action">Student Records</a>
+                <a href="{% url 'attendance' %}" class="list-group-item list-group-item-action">Attendance</a>
+                <a href="{% url 'teacher_profile' %}" class="list-group-item list-group-item-action">My Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h2>Welcome, {{ teacher.user.get_full_name }}</h2>
+        <div class="card">
+            <div class="card-header">
+                <h5>My Classes</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for class in teacher.classes.all %}
+                        <li class="list-group-item">{{ class.name }} - {{ class.section }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

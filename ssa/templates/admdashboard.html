@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>Admin Menu</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{% url 'manage_users' %}" class="list-group-item list-group-item-action">Manage Users</a>
+                <a href="{% url 'manage_classes' %}" class="list-group-item list-group-item-action">Manage Classes</a>
+                <a href="{% url 'manage_subjects' %}" class="list-group-item list-group-item-action">Manage Subjects</a>
+                <a href="{% url 'fee_management' %}" class="list-group-item list-group-item-action">Fee Management</a>
+                <a href="{% url 'transport_management' %}" class="list-group-item list-group-item-action">Transport</a>
+                <a href="{% url 'food_service_management' %}" class="list-group-item list-group-item-action">Food Service</a>
+                <a href="{% url 'expense_management' %}" class="list-group-item list-group-item-action">Expenses</a>
+                <a href="{% url 'reports' %}" class="list-group-item list-group-item-action">Reports</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h2>Admin Dashboard</h2>
+        <!-- Dashboard statistics and overview -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Students</h5>
+                        <p class="card-text">{{ student_count }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Teachers</h5>
+                        <p class="card-text">{{ teacher_count }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Classes</h5>
+                        <p class="card-text">{{ class_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
